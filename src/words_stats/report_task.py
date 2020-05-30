@@ -7,7 +7,7 @@ class TaskType(Enum):
     TEXT = 3
 
 
-class TaskMessage:
+class Task:
 
     def __init__(self, task_type: TaskType, content: str):
         self.task_type = task_type

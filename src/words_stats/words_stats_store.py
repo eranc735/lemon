@@ -7,16 +7,15 @@ import time
 class WordsStatsStore:
 
     def __init__(self):
-        self.words_count = defaultdict(lambda: 0)
-        self.counts_queue = Queue()
+        self.words_stats = defaultdict(lambda: 0)
+        self.stats_report_queue = Queue()
         self.running = False
 
     def update_counts(self, counts: dict):
-        self.counts_queue.put(counts)
+        self.stats_report_queue.put(counts)
 
     def get_count(self, word: str) -> int:
-        x = self.words_count[word]
-        return x
+        return self.words_stats[word]
 
     def start(self):
         self.running = True
@@ -28,9 +27,10 @@ class WordsStatsStore:
 
     def __counts_updating_handler(self):
         while self.running:
-            if not self.counts_queue.empty():
-                counts = self.counts_queue.get()
+            if not self.stats_report_queue.empty():
+                counts = self.stats_report_queue.get()
+
                 for word, count in counts.items():
-                    self.words_count[word] += count
+                    self.words_stats[word] += count
             else:
                 time.sleep(0.5)
