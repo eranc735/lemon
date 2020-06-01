@@ -14,10 +14,11 @@ class URLHandler(BaseHandler):
         words_count = defaultdict(lambda: 0)
 
         resp = requests.get(url=task.content, stream=True)
-        for line in resp.iter_lines(decode_unicode=True):
-            words = line.split()
-            for word in words:
-                word = self.word_normalization(word)
-                words_count[word] += 1
+        if resp.status_code == 200:
+            for line in resp.iter_lines(decode_unicode=True):
+                words = line.split()
+                for word in words:
+                    word = self.word_normalization(word)
+                    words_count[word] += 1
 
         return words_count
