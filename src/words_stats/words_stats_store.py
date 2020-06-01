@@ -3,6 +3,8 @@ from threading import Thread
 from queue import Queue
 import time
 
+HANDLER_SLEEPING_INTERVAL = 0.2
+
 
 class WordsStatsStore:
 
@@ -33,4 +35,4 @@ class WordsStatsStore:
                 for word, count in counts.items():
                     self.words_stats[word] += count
             else:
-                time.sleep(0.5)
+                time.sleep(HANDLER_SLEEPING_INTERVAL)

@@ -35,4 +35,4 @@ def word_stats():
 
     count = WordsStatsService.get_instance().get_word_count(word=word)
     word_count = {word: str(count)}
-    return jsonify((word_count))
+    return jsonify(word_count)
