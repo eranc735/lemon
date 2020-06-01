@@ -5,7 +5,7 @@ Assumptions:
     2. Each URL response can be big but it contains many lines in reasonable size
     3. Text input should feet memory
     3. Reporting rate should be reasonable to let system ingest the inputs(didn't include limit to tasks queue)
-    
+    4. URL endpoint should return 200 status code to be processed
 
 Call examples:
 
