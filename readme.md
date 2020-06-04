@@ -18,3 +18,10 @@ Word counter endpoint:
 Word Stats:
 
     localhost:5000/word_stats?word=shady
+    
+Running the app:
+from project dir:
+    pip install -r requirements.txt
+    export FLASK_APP=main.py
+    cd src
+    flask run
